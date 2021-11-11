@@ -47,6 +47,12 @@ def item_view(id):
     print(item.id, item.name, item.price, item.selling_price)
 
 
+def item_search(key, value):
+    item = Item()
+    results = item.search(key, value)
+    pprint(results)
+
+
 def login(username):
     f = open(__session_file__, "w")
     f.write(username)
@@ -92,3 +98,5 @@ if __name__ == "__main__":
             item_all()
         elif command == "view":
             item_view(*params)
+        elif command == "search":
+            item_search(*params)

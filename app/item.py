@@ -63,6 +63,15 @@ class Item:
             items.append(item)
         return items
 
+    def search(self, key, value):
+        items = self.all()
+        result_items = []
+        for item in items:
+            item_value = getattr(item, key)
+            if item_value == value:
+                result_items.append(item)
+        return result_items
+
     def find(self, id):
         Item.__get_item_by_path(self, f"{__item_folder__}/{id}.db")
 

@@ -61,3 +61,9 @@ item all
 ```cmd
 item view <id>
 ```
+
+### Search
+
+```cmd
+item search <key> <value>
+```
