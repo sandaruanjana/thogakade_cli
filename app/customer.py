@@ -62,5 +62,8 @@ class Customer:
             customers.append(customer)
         return customers
 
+    def find(self, id):
+        Customer.__get_customer_by_path(self, f"{__customer_folder__}/{id}.db")
+
     def __repr__(self):
         return f"id:{self.id},name:{self.name},address:{self.address},phone:{self.phone}"

@@ -22,6 +22,12 @@ customer save <name> <address> <phone>
 customer all
 ```
 
+### View
+
+```cmd
+customer view <id>
+```
+
 ## Item
 
 ### Create
