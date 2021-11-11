@@ -3,6 +3,9 @@ from app.item import Item, item_init
 from app.customer import Customer, customer_init
 from pprint import pprint
 
+__db_location__ = "db"
+__session_file__ = f"{__db_location__}/session.db"
+
 
 def customer_create(name, address, phone):
     customer = Customer()
@@ -44,6 +47,23 @@ def item_view(id):
     print(item.id, item.name, item.price, item.selling_price)
 
 
+def login(username):
+    f = open(__session_file__, "w")
+    f.write(username)
+    f.close()
+
+
+def __get_logged_user():
+    f = open(__session_file__, "r")
+    username = f.readline()
+    return username
+
+
+def view_user():
+    username = __get_logged_user()
+    print(username)
+
+
 if __name__ == "__main__":
     arguments = sys.argv[1:]
     item_init(arguments)
@@ -52,7 +72,12 @@ if __name__ == "__main__":
     command = arguments[1]
     params = arguments[2:]
 
-    if section == "customer":
+    if section == "user":
+        if command == "login":
+            login(*params)
+        elif command == "view":
+            view_user()
+    elif section == "customer":
         if command == "save":
             print(*params)
             customer_create(*params)
