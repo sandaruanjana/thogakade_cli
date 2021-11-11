@@ -42,6 +42,12 @@ customer all
 customer view <id>
 ```
 
+### Search
+
+```cmd
+customer search <key> <value>
+```
+
 ## Item
 
 ### Create

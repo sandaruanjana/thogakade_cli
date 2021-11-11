@@ -62,6 +62,15 @@ class Customer:
             customers.append(customer)
         return customers
 
+    def search(self, key, value):
+        customers = self.all()
+        result_customers = []
+        for customer in customers:
+            customer_value = getattr(customer, key)
+            if customer_value == value:
+                result_customers.append(customer)
+        return result_customers
+
     def find(self, id):
         Customer.__get_customer_by_path(self, f"{__customer_folder__}/{id}.db")
 

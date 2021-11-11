@@ -27,6 +27,12 @@ def customer_view(id):
     print(customer.id, customer.name, customer.address, customer.phone)
 
 
+def customer_search(key, value):
+    customer = Customer()
+    results = customer.search(key, value)
+    pprint(results)
+
+
 def item_create(name, price, selling_price):
     item = Item()
     item.name = name
@@ -91,6 +97,8 @@ if __name__ == "__main__":
             customer_all()
         elif command == "view":
             customer_view(*params)
+        elif command == "search":
+            customer_search(*params)
     elif section == "item":
         if command == "save":
             item_create(*params)
