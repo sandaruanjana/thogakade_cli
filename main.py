@@ -1,6 +1,7 @@
 import sys
 from app.item import Item, item_init
 from app.customer import Customer, customer_init
+from pprint import pprint
 
 
 def customer_create(name, address, phone):
@@ -11,12 +12,24 @@ def customer_create(name, address, phone):
     customer.save()
 
 
+def customer_all():
+    customer = Customer()
+    customers = customer.all()
+    pprint(customers)
+
+
 def item_create(name, price, selling_price):
     item = Item()
     item.name = name
     item.price = price
     item.selling_price = selling_price
     item.save()
+
+
+def item_all():
+    item = Item()
+    items = item.all()
+    pprint(items)
 
 
 if __name__ == "__main__":
@@ -31,6 +44,10 @@ if __name__ == "__main__":
         if command == "save":
             print(*params)
             customer_create(*params)
+        elif command == "all":
+            customer_all()
     elif section == "item":
         if command == "save":
             item_create(*params)
+        elif command == "all":
+            item_all()

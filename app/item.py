@@ -44,3 +44,24 @@ class Item:
         item.last_id += 1
         with open(__item__last_id__, "w") as f:
             f.write(str(item.last_id))
+
+    def __get_item_by_path(item, path):
+        with open(path, "r") as item_file:
+            _data_ = json.load(item_file)
+            item.id = _data_["id"]
+            item.name = _data_["name"]
+            item.price = _data_["price"]
+            item.selling_price = _data_["sellingPrice"]
+
+    def all(self):
+        item_file_names = os.listdir(__item_folder__)
+        items = []
+        for item_file_name in item_file_names:
+            item = Item()
+            Item.__get_item_by_path(
+                item, f"{__item_folder__}/{item_file_name}")
+            items.append(item)
+        return items
+
+    def __repr__(self):
+        return f"id:{self.id},name:{self.name},price:{self.price}"
