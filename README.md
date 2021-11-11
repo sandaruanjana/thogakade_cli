@@ -35,3 +35,9 @@ item save <name> <price> <selling_price>
 ```cmd
 item all
 ```
+
+### View
+
+```cmd
+item view <id>
+```

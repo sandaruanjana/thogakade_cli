@@ -63,5 +63,8 @@ class Item:
             items.append(item)
         return items
 
+    def find(self, id):
+        Item.__get_item_by_path(self, f"{__item_folder__}/{id}.db")
+
     def __repr__(self):
         return f"id:{self.id},name:{self.name},price:{self.price}"

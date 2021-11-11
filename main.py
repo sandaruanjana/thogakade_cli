@@ -32,6 +32,12 @@ def item_all():
     pprint(items)
 
 
+def item_view(id):
+    item = Item()
+    item.find(id)
+    print(item.id, item.name, item.price, item.selling_price)
+
+
 if __name__ == "__main__":
     arguments = sys.argv[1:]
     item_init(arguments)
@@ -51,3 +57,5 @@ if __name__ == "__main__":
             item_create(*params)
         elif command == "all":
             item_all()
+        elif command == "view":
+            item_view(*params)
