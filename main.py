@@ -1,6 +1,7 @@
 import sys
 from app.item import Item, item_init
 from app.customer import Customer, customer_init
+from app.order import Order, order_init
 from pprint import pprint
 
 __db_location__ = "db"
@@ -76,10 +77,28 @@ def view_user():
     print(username)
 
 
+def order_create(customer_id, item_id, item_price, quantity):
+    order = Order()
+    order.customerId = customer_id
+    order.itemId = item_id
+    order.itemPrice = item_price
+    order.itemQty = quantity
+    order.itemTotal = int(item_price) * int(quantity)
+    order.save()
+
+
+def order_all():
+    order = Order()
+    orders = order.all()
+    pprint(orders)
+
+
 if __name__ == "__main__":
     arguments = sys.argv[1:]
     item_init(arguments)
     customer_init(arguments)
+    order_init(arguments)
+
     section = arguments[0]
     command = arguments[1]
     params = arguments[2:]
@@ -91,7 +110,6 @@ if __name__ == "__main__":
             view_user()
     elif section == "customer":
         if command == "save":
-            print(*params)
             customer_create(*params)
         elif command == "all":
             customer_all()
@@ -108,3 +126,8 @@ if __name__ == "__main__":
             item_view(*params)
         elif command == "search":
             item_search(*params)
+    elif section == "order":
+        if command == "save":
+            order_create(*params)
+        elif command == "all":
+            order_all()
