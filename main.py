@@ -107,6 +107,12 @@ def order_view(id):
     print(order)
 
 
+def order_search(key, value):
+    order = Order()
+    results = order.search(key, value)
+    pprint(results)
+
+
 if __name__ == "__main__":
     arguments = sys.argv[1:]
     item_init(arguments)
@@ -147,3 +153,5 @@ if __name__ == "__main__":
             order_all()
         elif command == "view":
             order_view(*params)
+        elif command == "search":
+            order_search(*params)

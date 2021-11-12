@@ -68,5 +68,14 @@ class Order:
     def find(self, id):
         Order.__get_order_by_path(self, f"{__order_folder__}/{id}.db")
 
+    def search(self, key, value):
+        orders = self.all()
+        result_orders = []
+        for order in orders:
+            item_value = getattr(order, key)
+            if item_value == value:
+                result_orders.append(order)
+        return result_orders
+
     def __repr__(self):
         return f"id:{self.id},customerId:{self.customerId},itemId:{self.itemId},itemQty:{self.itemQty},itemTotal:{self.itemTotal}"

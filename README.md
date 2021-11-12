@@ -93,3 +93,9 @@ order all
 ```cmd
 order view <id>
 ```
+
+### Search
+
+```cmd
+order search <key> <value>
+```
