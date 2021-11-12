@@ -8,6 +8,8 @@ __db_location__ = "db"
 __session_file__ = f"{__db_location__}/session.db"
 
 
+# Customer
+
 def customer_create(name, address, phone):
     customer = Customer()
     customer.name = name
@@ -32,6 +34,8 @@ def customer_search(key, value):
     customer = Customer()
     results = customer.search(key, value)
     pprint(results)
+
+# Order
 
 
 def item_create(name, price, selling_price):
@@ -59,6 +63,8 @@ def item_search(key, value):
     results = item.search(key, value)
     pprint(results)
 
+# User
+
 
 def login(username):
     f = open(__session_file__, "w")
@@ -76,6 +82,8 @@ def view_user():
     username = __get_logged_user()
     print(username)
 
+# Order
+
 
 def order_create(customer_id, item_id, item_price, quantity):
     order = Order()
@@ -91,6 +99,12 @@ def order_all():
     order = Order()
     orders = order.all()
     pprint(orders)
+
+
+def order_view(id):
+    order = Order()
+    order.find(id)
+    print(order)
 
 
 if __name__ == "__main__":
@@ -131,3 +145,5 @@ if __name__ == "__main__":
             order_create(*params)
         elif command == "all":
             order_all()
+        elif command == "view":
+            order_view(*params)

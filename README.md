@@ -87,3 +87,9 @@ order save <customerId> <itemId> <itemPrice> <itemQty>
 ```cmd
 order all
 ```
+
+### View
+
+```cmd
+order view <id>
+```

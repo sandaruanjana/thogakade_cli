@@ -65,5 +65,8 @@ class Order:
             orders.append(order)
         return orders
 
+    def find(self, id):
+        Order.__get_order_by_path(self, f"{__order_folder__}/{id}.db")
+
     def __repr__(self):
         return f"id:{self.id},customerId:{self.customerId},itemId:{self.itemId},itemQty:{self.itemQty},itemTotal:{self.itemTotal}"
