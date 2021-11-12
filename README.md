@@ -73,3 +73,17 @@ item view <id>
 ```cmd
 item search <key> <value>
 ```
+
+## Order
+
+### Create
+
+```cmd
+order save <customerId> <itemId> <itemPrice> <itemQty>
+```
+
+### All
+
+```cmd
+order all
+```
